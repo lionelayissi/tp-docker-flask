@@ -1,0 +1,19 @@
+# Historique des commandes - TP Docker A1
+
+# 1. Construction de l'image
+docker build -t vanitas-flask-app .
+
+# 2. Vérification de l'image
+docker images
+
+# 3. Lancement du conteneur
+docker run -d -p 5000:5000 --name vanitas-flask vanitas-flask-app
+
+# 4. Vérification du conteneur
+docker ps
+
+# 5. Tag de l'image pour DockerHub
+docker tag vanitas-flask-app lionelrenaud1/vanitas-flask-app:v1
+
+# 6. Push sur DockerHub
+docker push lionelrenaud1/vanitas-flask-app:v1
