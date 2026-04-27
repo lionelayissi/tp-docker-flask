@@ -17,3 +17,20 @@ docker tag vanitas-flask-app lionelrenaud1/vanitas-flask-app:v1
 
 # 6. Push sur DockerHub
 docker push lionelrenaud1/vanitas-flask-app:v1
+
+# TP 2.3 - Docker Compose
+docker compose up -d
+docker compose ps
+
+# TP 2.4 - Réseau Docker
+docker network create custom_network
+docker run -d --name cont1 --network custom_network busybox sleep 3600
+docker run -d --name cont2 --network custom_network busybox sleep 3600
+docker exec cont1 ping -c 2 cont2
+docker network create net1
+docker network create net2
+docker run -d --name cont3 --network net1 busybox sleep 3600
+docker run -d --name cont4 --network net2 busybox sleep 3600
+docker exec cont3 ping -c 2 cont4
+docker network connect net2 cont3
+docker exec cont3 ping -c 2 cont4
