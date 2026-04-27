@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  web:
+    image: vanitas-flask-app
+    container_name: vanitas-flask-container
+    ports:
+      - "5000:5000"
+    restart: always
+
+networks:
+  default:
+    driver: bridge
